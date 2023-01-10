@@ -94,3 +94,10 @@ function makeDojo(name, students){
 }
 
 // this will return a type error since const dojo is immutable
+
+
+function multiplyBy2 (nums) {
+    return nums * 2;
+}
+
+const multiplyBy3 = nums => nums*3
