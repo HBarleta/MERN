@@ -28,3 +28,5 @@ const dev1 = new Developer("Harold", 100, 300)
 const dev2 = new Developer("Merlin", 100, 300)
 console.log(dev1)
 dev1.completeProject();
+
+module.exports = Developer

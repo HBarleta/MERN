@@ -19,7 +19,4 @@ class Ninja {
 
 
 const ninja1 = new Ninja("Jerry", 100)
-
-ninja1.sayName();
-ninja1.showStats();
-ninja1.drinkSake();
+module.exports = Ninja
