@@ -1,4 +1,4 @@
-const arr = Object.freeze([1,2,3,4])
+ mbnv d arr = Object.freeze([1,2,3,4])
 const obj = {"Harry": 12}
 obj["Jerry"] = 44;
 console.log(obj)
