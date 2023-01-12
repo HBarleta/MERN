@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import First from './components/first';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <First firstName = "Hello Dojo!" lastName ="Barleta" number={21}> */}
+      <First greeting = "Hello Dojo!" list = "Things I need to do">
+          <p>* Learn React</p>
+          <p>* Climb Mt. Everest</p>
+          <p>* Run a marathon</p>
+          <p>* Feed the dogs</p>
+      </First>
     </div>
   );
 }
