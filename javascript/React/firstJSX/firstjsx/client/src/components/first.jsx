@@ -49,7 +49,7 @@ export default class First extends Component {
       <div>
         <h1>{greeting}</h1>
         <h2>{list}</h2>
-        <p>{this.props.children}</p>
+        {this.props.children}
       </div>
     );
   }
