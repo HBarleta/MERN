@@ -28,6 +28,13 @@ const UserForm = () => {
               aria-label="First Name"
               aria-describedby="basic-addon1"
             />
+            {firstName.length < 2 && firstName.length > 0 ? (
+              <p className="text-danger">
+                First name must be 2 characters long
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -45,6 +52,11 @@ const UserForm = () => {
               aria-label="Last Name"
               aria-describedby="basic-addon1"
             />
+            {lastName.length < 2 && lastName.length > 0 ? (
+              <p className="text-danger">Last name must be 2 characters long</p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -62,6 +74,13 @@ const UserForm = () => {
               aria-label="Email"
               aria-describedby="basic-addon1"
             />
+            {email.length < 5 && email.length > 0 ? (
+              <p className="text-danger">
+                First name must be 5 characters long
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -79,6 +98,11 @@ const UserForm = () => {
               aria-label="Password"
               aria-describedby="basic-addon1"
             />
+            {password.length < 8 && password.length > 0 ? (
+              <p className="text-danger">Password be 8 characters long</p>
+            ) : (
+              ""
+            )}
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -96,6 +120,19 @@ const UserForm = () => {
               aria-label="Confirm Password"
               aria-describedby="basic-addon1"
             />
+            {confPassword.length < 8 && confPassword.length > 0 ? (
+              <p className="text-danger">
+                Password must be atleast 8 characters long
+              </p>
+            ) : (
+              ""
+            )}
+
+            {confPassword !== password && confPassword.length > 0 ? (
+              <p className="text-danger">Passwords must match!</p>
+            ) : (
+              ""
+            )}
           </div>
         </form>
       </div>
