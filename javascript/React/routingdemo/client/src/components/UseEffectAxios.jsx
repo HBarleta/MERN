@@ -15,7 +15,7 @@ const UseEffectAxios = () => {
       .catch((err) => {
         console.log("This is my catch function", err);
       });
-  }, []); // [] dependancy array which will tell the hook to stop fetching data
+  }, []); // [] dependancy array which will tell the hook to stop fetching data. if its empty it will run on first app load then stop. passing in a function inside the dependancy array can also run the useEffect or stop it.
   return (
     <div className="row justify-content-center">
       <h1>Axios USE EFFECT</h1>
