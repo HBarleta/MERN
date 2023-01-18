@@ -9,8 +9,11 @@ const ToDoList = () => {
     { item: "Code", competed: false },
     { item: "Repeat", completed: false },
   ]);
-  const deleteItem = () => {
-    console.log("You Deleted me!");
+  const deleteItem = (e, idx) => {
+    let list = listOfItems.filter((item, i) => {
+      return i !== idx;
+    });
+    setListOfItems([...list]);
   };
   const addItem = (e) => {
     e.preventDefault();
@@ -43,7 +46,12 @@ const ToDoList = () => {
                 <h2>{oneitem.item}</h2>
                 <div className="col-6 d-flex justify-content-evenly">
                   <input type="checkbox" />
-                  <button onClick={deleteItem}>Delete</button>
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={(e) => deleteItem(e, idx)}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
