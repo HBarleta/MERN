@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const ToDoList = () => {
   const [item, setItem] = useState("");
-  const [checked, setChecked] = useState(false);
   let [listOfItems, setListOfItems] = useState([
     { item: "Eat", completed: false },
     { item: "Sleep", completed: false },
@@ -22,7 +21,9 @@ const ToDoList = () => {
     setListOfItems([...listOfItems, newItem]);
   };
 
-  const completeItem = () => {};
+  const completeItem = () => {
+    console.log("This check box is working");
+  };
 
   return (
     <div>
@@ -37,13 +38,14 @@ const ToDoList = () => {
       </form>
       <div>
         <h1>List:</h1>
+
         {listOfItems.map((oneitem, idx) => {
           return (
             <div key={idx} className="row justify-content-center border">
               <div className="col-6 d-flex justify-content-end my-3">
                 <h2>{oneitem.item}</h2>
                 <div className="col-6 d-flex justify-content-evenly">
-                  <input type="checkbox" />
+                  <input onClick={completeItem} type="checkbox" />
                   <button
                     className="btn btn-outline-danger"
                     onClick={(e) => deleteItem(e, idx)}
