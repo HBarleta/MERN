@@ -9,18 +9,20 @@ const MessageForm = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Set Message</h1>
-        <textarea
-          rows="4"
-          cols="50"
-          placeholder="Enter your message here"
-          onChange={(e) => setMsg(e.target.value)}
-          value={msg}
-        ></textarea>
-        <input type="submit" value="send Message" />
-      </form>
+    <div className="row justify-content-center">
+      <div className="col-5">
+        <form onSubmit={handleSubmit}>
+          <h1>Set Message</h1>
+          <textarea
+            rows="4"
+            cols="50"
+            placeholder="Enter your message here"
+            onChange={(e) => setMsg(e.target.value)}
+            value={msg}
+          ></textarea>
+          <input type="submit" value="send Message" />
+        </form>
+      </div>
     </div>
   );
 };

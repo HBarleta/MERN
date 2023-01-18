@@ -24,16 +24,18 @@ const FetchAPI = () => {
   };
 
   return (
-    <div>
-      <h1>FetchAPI</h1>
-      <button onClick={fetchData}>Get data</button>
+    <div className="row justify-content-center">
+      <div className="col-5">
+        <h1>FetchAPI</h1>
+        <button onClick={fetchData}>Get data</button>
+      </div>
       {coins.map((c, i) => {
         return (
           <div key={i}>
             <div className="row justify-content-center">
               <div className="col-5 m-3">
                 <br />
-                <img src={c.image} alt="symbol" width="50px" />
+                <img src={c.image} alt="symbol" width="100px" />
                 <h1>{c.name}</h1>
                 <h2>Symbol: {c.symbol.toUpperCase()}</h2>
                 <h3>Current Price: ${c.current_price}</h3>
