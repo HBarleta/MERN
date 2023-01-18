@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App row">
-      <Tabs content = {["Tab1 content showing", "Tab2 content showing", "Tab3 content showing"]}></Tabs>
+      <Tabs content = {{tab1:"Tab1 content showing", tab2:"Tab2 content showing", tab3:"Tab3 content showing"}}></Tabs>
     </div>
   );
 }

@@ -5,10 +5,18 @@ const Tabs = (props) => {
   const items = props;
   const [tab, setTab] = useState("");
   return (
-    <div>
-      <button onClick={() => setTab(0)}>Tab1</button>
-      <button onClick={() => setTab(1)}>Tab2</button>
-      <button onClick={() => setTab(2)}>Tab3</button>
+    <div className="row justify-content-around">
+      <div className="col-5">
+        <button className="m-4" onClick={() => setTab("tab1")}>
+          Tab1
+        </button>
+        <button className="m-4" onClick={() => setTab("tab2")}>
+          Tab2
+        </button>
+        <button className="m-4" onClick={() => setTab("tab3")}>
+          Tab3
+        </button>
+      </div>
       <div className="border">
         <h1>{items.content[tab]}</h1>
       </div>
