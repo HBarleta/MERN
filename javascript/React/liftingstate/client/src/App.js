@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import MessageForm from './components/MessageForm';
 import MessageDisplay from './components/MessageDisplay';
 import { useState } from 'react';
+import FetchAPI from './components/FetchAPI';
 
 function App() {
   const [currentMsg, setCurrentMsg] = useState("There are no messages")
@@ -11,10 +12,11 @@ function App() {
     setCurrentMsg(newMessage);
   }
   return (
-    <>
+    <div>
       <MessageForm onNewMessage={ youveGotMail} />
       <MessageDisplay message={ currentMsg }/>
-    </>
+      <FetchAPI></FetchAPI>
+    </div>
   );
 }
 
