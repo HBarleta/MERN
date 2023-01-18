@@ -21,8 +21,12 @@ const ToDoList = () => {
     setListOfItems([...listOfItems, newItem]);
   };
 
-  const completeItem = () => {
-    console.log("This check box is working");
+  const completeItem = (e, idx) => {
+    console.log("Before", listOfItems[idx].completed);
+    if (listOfItems[idx].completed === true) {
+      listOfItems[idx].completed = false;
+    } else listOfItems[idx].completed = true;
+    console.log("After", listOfItems[idx].completed);
   };
 
   return (
@@ -45,7 +49,10 @@ const ToDoList = () => {
               <div className="col-6 d-flex justify-content-end my-3">
                 <h2>{oneitem.item}</h2>
                 <div className="col-6 d-flex justify-content-evenly">
-                  <input onClick={completeItem} type="checkbox" />
+                  <input
+                    onClick={(e) => completeItem(e, idx)}
+                    type="checkbox"
+                  />
                   <button
                     className="btn btn-outline-danger"
                     onClick={(e) => deleteItem(e, idx)}
