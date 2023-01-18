@@ -22,9 +22,7 @@ const ToDoList = () => {
     setListOfItems([...listOfItems, newItem]);
   };
 
-  const completeItem = (e) => {
-    setChecked(!checked);
-  };
+  const completeItem = () => {};
 
   return (
     <div>
