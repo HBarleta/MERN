@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const ToDoList = () => {
   const [item, setItem] = useState("");
   let [listOfItems, setListOfItems] = useState([
-    { item: "Eat", completed: false },
+    { item: "Eat", completed: true },
     { item: "Sleep", completed: false },
     { item: "Code", competed: false },
     { item: "Repeat", completed: false },
@@ -52,7 +52,9 @@ const ToDoList = () => {
                   <input
                     onClick={(e) => completeItem(e, idx)}
                     type="checkbox"
+                    value={oneitem.completed}
                   />
+
                   <button
                     className="btn btn-outline-danger"
                     onClick={(e) => deleteItem(e, idx)}
