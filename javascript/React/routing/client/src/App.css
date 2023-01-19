@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.nav-bar, a {
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  
+  
+
+}
+
+.nb-div {
+  height: 50px;
+  background-color: black;
+}
