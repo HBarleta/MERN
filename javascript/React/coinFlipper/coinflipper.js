@@ -36,10 +36,10 @@ const fiveHeads = () => {
         headsCount = 0;
       }
     }
-    if(headsCount === 5){
+    if(headsCount === 5 && attempts < 101){
       resolve(`It took ${attempts} tries to flip 5 "Heads"`)
     } else{
-      reject("Could not reach 5 heads")
+      reject("Could not reach 5 heads before 100 flips")
     }
   });
 }
