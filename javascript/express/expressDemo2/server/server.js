@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 8000;
 
+require('./config/mongoose.config')
+
 const Routes = require('./routes/song.routes')
 Routes(app)
 

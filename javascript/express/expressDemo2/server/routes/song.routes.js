@@ -6,4 +6,8 @@ module.exports = (app) => {
     app.get("/api/test", SongController.testApi)
     // app."" determines what protocol to use 
     app.post("/api/songs", SongController.createSong)
+    app.get("/api/songs", SongController.getAllSongs)
+    app.get("/api/songs/:id", SongController.getOneSong)
+    
+     
 }

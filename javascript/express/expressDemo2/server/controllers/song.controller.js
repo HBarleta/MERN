@@ -18,9 +18,25 @@ module.exports.createSong = (req, res) => {
 }
 
 // Read all
-
+module.exports.getAllSongs = (req, res) => {
+    Song.find()
+    .then((songs) => res.json(songs))
+    .catch((err) => res.json(err))
+};
 // Read one
-
+module.exports.getOneSong = (req, res) => {
+    const idFromParams = req.params.id
+    Song.findOne({_id:idFromParams})
+    .then((one) => res.json(one))
+    .catch((err) => res.json(err))
+}
 // Update one
+module.exports.updateSong = (req, res) => {
+    const idFromParams = req.params.id
+    const updatedValue = req.body
+    Song.findOneAndUpdate({_id: idFromParams}, updatedValue, {new:true})
+    .then((updatedSong) => res.json(updatedSong))
+    .catch((err) => res.json(err))
+}
 
 // Delete one
