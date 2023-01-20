@@ -44,7 +44,7 @@ app.put("/api/menu/:idx", (req, res) => {
     res.json({ count: menuItems.length, results: menuItems});
 });
 
-app.delete("api/menu/idx", (req, res) => {
+app.delete("api/menu/:idx", (req, res) => {
     menuItems.splice(req.params.idx, 1);
     res.json({count: menuItems.length, results: menuItems});
 })
