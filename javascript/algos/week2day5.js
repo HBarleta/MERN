@@ -26,4 +26,27 @@ const expected3 = [1, 6];
  * @returns {Array<number>} The two indexes of the numbers in the given nums
  *    that add up to the targetSum.
  */
-function twoSum(nums, targetSum) {}
+// const nums3 = [3, 8, 4, 1, 9, 0, -2];
+// const targetSum3 = 6;
+// const expected3 = [1, 6];
+
+function twoSum(nums, targetSum) {
+    
+    for(let i =0; i < nums.length; i++){
+        
+    }
+
+
+//     let result = [];
+//     for(let i = 0; i < nums.length; i++){
+//         for(let j = i+1; j < nums.length; j++){
+//             if(nums[i] + nums[j] === targetSum) {
+//                 result.push(i);
+//                 result.push(j);
+//                 return result;
+//         }
+//     }
+//     }
+}
+
+console.log(twoSum(nums3, targetSum3))
