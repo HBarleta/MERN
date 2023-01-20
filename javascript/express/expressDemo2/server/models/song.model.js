@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+//imports mongoose to interact with database
+
 
 const SongSchema = new mongoose.Schema({
     title: {
@@ -12,11 +14,13 @@ const SongSchema = new mongoose.Schema({
     },
     artist: {
         type: String,
+        // for string minLength is a built in for character length
         required: [true,"Artist is required"],
         minLength: [5, "Arist must be atleast 5 characters long"],
     },
     rating: {
         type: Number,
+        // for integers min and max determine values
         min: [1, "Rating must be positive"],
         max: [10, "Max rating is 10"]
     }

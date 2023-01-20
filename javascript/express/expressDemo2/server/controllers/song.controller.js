@@ -1,5 +1,5 @@
 const Song = require('../models/song.model')
-
+// imports Song model file
 module.exports.testApi = (req, res) => {
     res.json({Status: "I made capt."})
 }
