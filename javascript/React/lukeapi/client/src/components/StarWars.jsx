@@ -1,38 +1,23 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 const StarWars = () => {
-  const [searchData, setSearchData] = useState([]);
   const [searchParam, setSearchParam] = useState("people");
-  const [searchId, setSearchId] = useState("");
+  // searchParam is used to gather and set desired resource from drop down menu
+  const [searchId, setSearchId] = useState("1");
+  // searchId is used to gather and store desired ID for chosen resource
   const searchOptions = [
-    { label: "People", value: "people", count: 82 },
-    { label: "Planets", value: "planets", count: 60 },
-    { label: "Vehicles", value: "vehicles", count: 39 },
-    { label: "Starships", value: "starships", count: 36 },
-    { label: "Films", value: "films", count: 6 },
+    // searchOptions is used to populate dropdown menu and pass in a value to searchParam to be used in Link / search button
+    { label: "People", value: "people" },
+    { label: "Planets", value: "planets" },
   ];
 
-  const searchUniverse = () => {
-    console.log("my function works");
-    axios
-      .get("https://swapi.dev/api/" + searchParam + "/" + searchId)
-      //   base url will be concatenated with search values for the particular search
-      .then((res) => {
-        setSearchData(...[res.data]);
-
-        console.log("This is my Api call", res.data);
-      })
-      .catch((err) => {
-        console.log("This is my errors", err);
-      });
-  };
-
   return (
-    <div>
+    <div className="container text-start my-5">
       <label>Search for : </label>
-      <select onChange={(e) => setSearchParam(e.target.value)}>
+      <select className="m-3" onChange={(e) => setSearchParam(e.target.value)}>
         {searchOptions.map((options, idx) => {
+          // mapping over searchOptions array to provide fixed search options
           return (
             <option key={idx} value={options.value}>
               {options.label}
@@ -42,25 +27,25 @@ const StarWars = () => {
       </select>
       {/* this will populate with the correct amount of IDs available for current search param */}
       <label>ID: </label>
-
       <input
-        onChange={(e) => setSearchId(e.target.value)}
+        className="m-3"
         type="number"
-        min={1}
+        onChange={(e) => setSearchId(e.target.value)}
       />
-      <button onClick={searchUniverse}> SEARCH </button>
-
-      {/* on click of this button should initiate a filter method to parse through entire universe data set */}
-      <div>
-        <h1>{searchData.name}</h1>
-      </div>
+      {/* onClick will take in the variable holding the searchParam word and route it to the correct page.  */}
+      <Link
+        className="btn btn-primary"
+        to={"results/" + searchParam + "/" + searchId}
+        // this Link utilizes useParams to pass in searchParm and searchId into the route
+      >
+        Search
+      </Link>
     </div>
   );
 };
 
 export default StarWars;
 
-// search bar with drop down menu that is prepopulated with available people, vehicles, planets
-// id drop down menu with prepopulated id for each vehicle, planet or people
-// search button will filter out API call from axios and useEffect will add all available data to universe const once page loads
-// div below search will display requested information
+// search bar with drop down menu that is prepopulated with available people and planets options
+// clicking on search will link to results page and pass in searchId and searchParams variables in the route
+//
