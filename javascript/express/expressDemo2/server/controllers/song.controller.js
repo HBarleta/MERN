@@ -7,14 +7,14 @@ module.exports.testApi = (req, res) => {
 // Create one
 
 module.exports.createSong = (req, res) => {
+    //req.body is all the inbound data
     Song.create(req.body)
+    // Song refers to database, name was created in model file
     .then((newSong) => res.json(newSong))
+    // takes res and turns it into json to pass into client side
     .catch(err => res.json(err))
+    //error catch
 }
-//req.body is all the inbound data
-// Song refers to database, name was created in model file
-// takes res and turns it into json to pass into client side
-//error catch
 
 // Read all
 module.exports.getAllSongs = (req, res) => {

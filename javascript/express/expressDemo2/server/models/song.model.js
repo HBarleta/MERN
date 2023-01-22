@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 //imports mongoose to interact with database
 
-// validation, true = required , "string warning"
-// validation for character length
-// for string minLength is a built in for character length
 const SongSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, "Title is required"],
+        // validation for character length
+        // validation, true = required , "string warning"
         minLength: [5, "Title must be atleast 5 characters long"],
+        // for string minLength is a built in for character length
     },
     artist: {
         type: String,
