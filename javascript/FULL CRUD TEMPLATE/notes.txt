@@ -80,6 +80,8 @@ ex: pokemon.routes.js
     pokemon.controllers.js
     pokemon.models.js
 create mongoose.config.js file inside config folder
+inside mongoose.config.js file import mongoose
+const mongoose = require('mongoose)
 
 start server by running command
 nodemon server.js
