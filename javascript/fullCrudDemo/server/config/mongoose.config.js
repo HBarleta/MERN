@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const database = "fullstackdemo23";
 // connects to database
+mongoose.set('strictQuery', true)
 mongoose.connect(`mongodb://127.0.0.1:27017/${database}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
