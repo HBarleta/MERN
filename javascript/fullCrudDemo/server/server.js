@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+require('./config/mongoose.config')
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-require('./config/mongoose.config')
 
 // this will point to routes file for server requests
 const Routes = require('./routes/song.route')
