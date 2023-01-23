@@ -13,6 +13,7 @@ function App() {
       <div>
 
      <StarWars/>
+     {/* Starwars component will always be available in all routes. since "/" does not have a route it will default to this component */}
       <Routes>
         <Route path="results/:search/:id" element={<SearchResults></SearchResults>} />
         {/* this route utilizes useParams to pass in search and id variables to be used in the axios call in the results page */}

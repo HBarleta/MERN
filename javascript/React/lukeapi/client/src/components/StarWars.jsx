@@ -16,6 +16,7 @@ const StarWars = () => {
     <div className="container text-start my-5">
       <label>Search for : </label>
       <select className="m-3" onChange={(e) => setSearchParam(e.target.value)}>
+        {/* onChange will set searchParam to the value */}
         {searchOptions.map((options, idx) => {
           // mapping over searchOptions array to provide fixed search options
           return (
@@ -32,10 +33,10 @@ const StarWars = () => {
         type="number"
         onChange={(e) => setSearchId(e.target.value)}
       />
-      {/* onClick will take in the variable holding the searchParam word and route it to the correct page.  */}
+      {/* onChange even will set searchId and to be used in the link */}
       <Link
         className="btn btn-primary"
-        to={"results/" + searchParam + "/" + searchId}
+        to={`results/${searchParam}/${searchId}`}
         // this Link utilizes useParams to pass in searchParm and searchId into the route
       >
         Search
@@ -45,7 +46,3 @@ const StarWars = () => {
 };
 
 export default StarWars;
-
-// search bar with drop down menu that is prepopulated with available people and planets options
-// clicking on search will link to results page and pass in searchId and searchParams variables in the route
-//
