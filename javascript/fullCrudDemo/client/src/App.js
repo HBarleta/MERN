@@ -5,6 +5,7 @@ import Display from './components/Display';
 import Create from './components/Create';
 import {BrowserRouter,Route, Routes} from 'react-router-dom'
 import Details from './components/Details';
+import Update from './components/Update';
 function App() {
   return (
       <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<Display/>} />
             <Route path="/create" element={<Create />} />
             <Route path="/details/:id" element={<Details />} />
+            <Route path="/update/:id" element={<Update />} />
           </Routes>
         </div>
       </BrowserRouter>
