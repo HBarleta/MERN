@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Display = () => {
   const [songList, setSongList] = useState([]);
   // songList will take in res data from useEffect API call
-
+  const [deleteToggle, setDeleteToggle] = useState(false);
   useEffect(() => {
     // this will render page on first load
     axios
@@ -14,7 +14,24 @@ const Display = () => {
         setSongList(res.data);
       })
       .catch((err) => console.log("This is my display page error", err));
-  }, []);
+  }, [deleteToggle]);
+
+  const handleDelete = (e, id) => {
+    console.log(`Deleteing song ${id}`, id);
+
+    axios
+      .delete(`http://127.0.0.1:8000/api/song/${id}`)
+      .then((res) => {
+        console.log("Deleted", res);
+        setDeleteToggle(!deleteToggle);
+      })
+      .catch((err) =>
+        console.log(
+          "There was an error with delete function in Display component",
+          err
+        )
+      );
+  };
 
   return (
     <div className="container">
@@ -42,9 +59,22 @@ const Display = () => {
                 {/* this song.top100 is a boolean, it needs to render conditionally depending on its value (true/false) */}
                 <td>{song.top100 ? "Yes" : "No"}</td>
                 <td>
-                  <button className="btn btn-outline-success">Edit</button>
+                  <Link
+                    to={`update/${song._id}`}
+                    className="btn btn-outline-success"
+                  >
+                    {" "}
+                    Edit
+                  </Link>
                   {" | "}
-                  <button className="btn btn-outline-danger">Delete</button>
+                  <button
+                    onClick={(e) => {
+                      handleDelete(e, song._id);
+                    }}
+                    className="btn btn-outline-danger"
+                  >
+                    Delete
+                  </button>
                   {" | "}
                   <Link
                     to={`details/${song._id}`}
