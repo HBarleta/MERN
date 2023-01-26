@@ -11,6 +11,6 @@ io.on("connection", socket => {
     console.log(socket.id)
     socket.on("chat", client_input => {
         console.log("Got a message", client_input)
-        socket.broadcast.emit("post chat", client_input);
+        io.emit("post chat", client_input);
     });
 });
