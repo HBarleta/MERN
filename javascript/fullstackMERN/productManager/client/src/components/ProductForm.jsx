@@ -6,6 +6,7 @@ const ProductForm = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [productList, setProductList] = useState([]);
+  const [deleteSwitch, setDeleteSwitch] = useState(false);
 
   useEffect(() => {
     axios
@@ -20,7 +21,7 @@ const ProductForm = () => {
       .catch((err) => {
         console.log("This is an error from DisplayProducts component", err);
       });
-  }, []);
+  }, [deleteSwitch]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const formObj = { title, price, description };
@@ -28,9 +29,26 @@ const ProductForm = () => {
       .post("http://127.0.0.1:8000/api/products/add", formObj)
       .then((res) => {
         console.log("This is your addproduct request form data", res);
+        setDeleteSwitch(!deleteSwitch);
       })
       .catch((err) => {
         console.log("This is an error from ProductForm component", err);
+      });
+  };
+
+  const handleDelete = (id) => {
+    console.log("This is a delete function");
+    axios
+      .delete(`http://127.0.0.1:8000/api/product/deleteone/${id}`)
+      .then((res) => {
+        setDeleteSwitch(!deleteSwitch);
+        console.log("item was deleted");
+      })
+      .catch((err) => {
+        console.log(
+          "An error occured in ProductForm component delete call",
+          err
+        );
       });
   };
 
@@ -97,13 +115,39 @@ const ProductForm = () => {
         </div>
         <hr />
         <h1>All Products</h1>
-        {productList.map((p, idx) => {
-          return (
-            <div key={idx} className="m-3">
-              <Link to={`/displayproduct/${p._id}`}>{p.title}</Link>
-            </div>
-          );
-        })}
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productList.map((p, idx) => {
+              return (
+                <tr key={idx}>
+                  <td>
+                    <Link to={`/displayproduct/${p._id}`}>{p.title}</Link>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/editproduct/${p._id}`}
+                      className="btn btn-outline-success mx-2"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(p._id)}
+                      className="btn btn-outline-danger mx-2"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
