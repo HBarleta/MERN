@@ -11,7 +11,7 @@ module.exports.addSong = (req, res) => {
     // create is a built in
     Song.create(newSong)
     .then(song => res.json(song))
-    .catch(error => res.json(error))
+    .catch(error => res.status(400).json(error))
 }
 
 // allSongs

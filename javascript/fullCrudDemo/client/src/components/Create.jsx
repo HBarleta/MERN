@@ -7,7 +7,7 @@ const Create = () => {
   const [artist, setArtist] = useState("");
   const [rating, setRating] = useState(5);
   const [top100, setTop100] = useState(false);
-
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleForm = (e) => {
@@ -19,13 +19,26 @@ const Create = () => {
       .then((res) => {
         navigate("/");
       })
-      .catch((err) => console.log("This is from our create page", err));
+      .catch((err) => {
+        console.log("This is from our create page", err);
+        const errorResponse = err.response.data.errors;
+        const errorArr = [];
+        for (const key of Object.keys(errorResponse)) {
+          errorArr.push(errorResponse[key].message);
+        }
+        setErrors(errorArr);
+      });
   };
 
   return (
     <div className="container">
       <h1>Add a Song - create</h1>
       <form onSubmit={handleForm}>
+        {errors.map((err, index) => (
+          <p className="text-danger" key={index}>
+            {err}
+          </p>
+        ))}
         <div className="row ">
           <div>
             <label>Title: </label>

@@ -15,7 +15,7 @@ const SongSchema = new mongoose.Schema({
     rating: {
         type: Number,
         required: [false],
-        min: [0, "Rating must be greater than 0"],
+        min: [1, "Rating must be greater than 0"],
         max: [10, "Maximum rating is 10"]
     },
     top100: {
