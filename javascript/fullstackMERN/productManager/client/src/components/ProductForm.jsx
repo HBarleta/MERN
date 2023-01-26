@@ -5,7 +5,22 @@ const ProductForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [productList, setProductList] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/api/products/getall")
+      .then((res, req) => {
+        console.log(
+          "This is a getAll request from DisplayProducts component",
+          res.data
+        );
+        setProductList(res.data);
+      })
+      .catch((err) => {
+        console.log("This is an error from DisplayProducts component", err);
+      });
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const formObj = { title, price, description };
@@ -23,8 +38,8 @@ const ProductForm = () => {
     <div className="container d-flex align-items-center">
       <div className="row mx-auto my-3">
         <div className="col-12">
-          <h1>Manager</h1>
-          <form onSubmit={handleSubmit}>
+          <h1>Add a Product</h1>
+          <form onSubmit={handleSubmit} className="m-5">
             <div className="input-group m-3">
               <div className="input-group-prepend">
                 <span className="input-group-text" id="basic-addon1">
@@ -80,6 +95,15 @@ const ProductForm = () => {
             </button>
           </form>
         </div>
+        <hr />
+        <h1>All Products</h1>
+        {productList.map((p, idx) => {
+          return (
+            <div key={idx} className="m-3">
+              <Link to={`/displayproduct/${p._id}`}>{p.title}</Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
