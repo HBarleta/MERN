@@ -36,6 +36,7 @@ cd into server
 run command npm install express (for backend)
 run command npm init -y (this will create the react app, -y will answer yes to all questions)
 run command npm install mongoose (This is an object modeling tool for MongoDB)
+run command npm install cors (for backend/front end connections)
 
 create a server.js file inside server folder
 inside server.js create the following variables in this exact order
