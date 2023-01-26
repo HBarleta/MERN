@@ -10,9 +10,9 @@ const ProductForm = () => {
     e.preventDefault();
     const formObj = { title, price, description };
     axios
-      .post("http://127.0.0.1:8000/api/addproduct", formObj)
+      .post("http://127.0.0.1:8000/api/products/add", formObj)
       .then((res) => {
-        console.log("This is your addproduct request", res);
+        console.log("This is your addproduct request form data", res);
       })
       .catch((err) => {
         console.log("This is an error from ProductForm component", err);
