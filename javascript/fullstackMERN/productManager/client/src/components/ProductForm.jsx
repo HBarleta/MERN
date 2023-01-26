@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const ProductForm = () => {
   const [title, setTitle] = useState("");
@@ -42,7 +42,7 @@ const ProductForm = () => {
       .delete(`http://127.0.0.1:8000/api/product/deleteone/${id}`)
       .then((res) => {
         setDeleteSwitch(!deleteSwitch);
-        console.log("item was deleted");
+        console.log("item was deleted", res);
       })
       .catch((err) => {
         console.log(

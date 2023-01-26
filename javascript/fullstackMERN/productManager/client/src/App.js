@@ -2,7 +2,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ProductForm from './components/ProductForm';
-import {Routes, Route, useParams} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import DisplayProducts from './components/DisplayProducts';
 import EditProduct from './components/EditProduct';
 function App() {

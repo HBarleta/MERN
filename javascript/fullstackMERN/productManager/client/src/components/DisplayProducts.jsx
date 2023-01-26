@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 const DisplayProducts = () => {
   const [product, setProduct] = useState([]);
@@ -10,7 +10,7 @@ const DisplayProducts = () => {
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:8000/api/products/getone/${id}`)
-      .then((res, req) => {
+      .then((res) => {
         console.log(
           "This is a getAll request from DisplayProducts component",
           res.data
