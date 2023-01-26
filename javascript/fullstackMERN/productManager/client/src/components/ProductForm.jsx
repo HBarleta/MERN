@@ -11,7 +11,7 @@ const ProductForm = () => {
   useEffect(() => {
     axios
       .get("http://127.0.0.1:8000/api/products/getall")
-      .then((res, req) => {
+      .then((res) => {
         console.log(
           "This is a getAll request from DisplayProducts component",
           res.data
