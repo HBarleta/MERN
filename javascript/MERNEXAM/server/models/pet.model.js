@@ -8,7 +8,7 @@ const PetSchema = new mongoose.Schema({
     },
     type : {
         type: String,
-        required: [true, "Must provide pet name"],
+        required: [true, "Must provide pet type"],
         minlength: [3, "Type must be atleast 3 characters long"]
     },
     description : {
@@ -18,15 +18,15 @@ const PetSchema = new mongoose.Schema({
     },
     skill1 : {
         type: String,
-        minlength: [3, "Skill 1 must be atleast 3 characters long"]
+        
     },
     skill2 : {
         type: String,
-        minlength: [3, "Skill 2 must be atleast 3 characters long"]
+        
     },
     skill3 : {
         type: String,
-        minlength: [3, "Skill 3 must be atleast 3 characters long"]
+        
     },
 
 

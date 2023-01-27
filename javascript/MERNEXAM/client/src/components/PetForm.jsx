@@ -17,6 +17,17 @@ const PetForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [editName, setEditName] = useState("");
+
+  const handleUpdate = (e) => {
+    const updatePet = { name, type, description, skill1, skill2, skill3 };
+    e.preventDefault();
+    axios
+      .put(`http://127.0.0.1:8000/api/pet/${id}`, updatePet)
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err) => console.log("Error in update PUT request", err));
+  };
   const handleSubmit = (e) => {
     const newPet = { name, type, description, skill1, skill2, skill3 };
     let editName = "";
@@ -123,10 +134,17 @@ const PetForm = () => {
                     />
                   </div>
                 </div>
-                <Button variant="contained" color="primary" type="submit">
-                  {" "}
-                  {id === undefined ? "Add Pet" : "Update Pet"}
-                </Button>
+                {id === undefined ? (
+                  <Button variant="contained" color="primary" type="submit">
+                    {" "}
+                    {"Add Pet"}
+                  </Button>
+                ) : (
+                  <Button variant="contained" onClick={(e) => handleUpdate(e)}>
+                    {" "}
+                    Update {name}
+                  </Button>
+                )}
 
                 <Link className="btn btn-danger" to="/">
                   Cancel
