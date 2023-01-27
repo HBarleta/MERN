@@ -7,7 +7,17 @@ const Form = () => {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
-
+  const [newId, setNewId] = useParams("");
+  const handleUpdate = (e) => {
+    const newName = { name };
+    e.preventDefault();
+    axios
+      .put(`http://127.0.0.1:8000/api/author/${id}`, newName)
+      .then((res) => {
+        navigate("/");
+      })
+      .catch((err) => console.log("Error in update PUT request", err));
+  };
   const handleSubmit = (e) => {
     const newName = { name };
     e.preventDefault();
@@ -36,6 +46,7 @@ const Form = () => {
         console.log("This is my get request for Update Component", res);
         const author = res.data;
         setName(author.name);
+        setNewId(author._id);
       })
       .catch((err) => {
         console.log("This is an error on my edit component", err);
@@ -61,9 +72,13 @@ const Form = () => {
         <Link className="btn btn-danger my-3" to="/">
           Cancel
         </Link>
-        <button type="submit" className="btn btn-outline-primary mx-3">
-          Submit
-        </button>
+        {newId === undefined ? (
+          <button onClick={(e) => handleUpdate(e)}> Update Author</button>
+        ) : (
+          <button type="submit" className="btn btn-outline-primary mx-3">
+            Submit
+          </button>
+        )}
       </div>
     </form>
   );
