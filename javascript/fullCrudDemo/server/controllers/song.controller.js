@@ -12,6 +12,7 @@ module.exports.addSong = (req, res) => {
     Song.create(newSong)
     .then(song => res.json(song))
     .catch(error => res.status(400).json(error))
+    // Validations for frontend
 }
 
 // allSongs
