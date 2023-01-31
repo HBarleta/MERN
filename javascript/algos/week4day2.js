@@ -53,16 +53,17 @@ function santasNaughtyList(persons, badHabit) {
     let output = [];
     for(let i = 0; i < persons.length; i++){
         // console.log(persons[i])
-        console.log(persons[i].habits.includes(badHabit))
+        // console.log(persons[i].habits.includes(badHabit))
         if(persons[i].habits.includes(badHabit)){
             output.push(persons[i].firstName + " " +  persons[i].lastName)
         }
     }
     return output;
-
 }
 
-// console.log(santasNaughtyList(students, badHabit1))
+console.log(santasNaughtyList(students, badHabit1))
+console.log(santasNaughtyList(students, badHabit2))
+console.log(santasNaughtyList(students, badHabit3))
 
 /**
  * Finds a list of people whose habits contain the given bad habit. 
@@ -79,11 +80,17 @@ function santasNaughtyList(persons, badHabit) {
 function santasNaughtyListFunctional(persons, badHabit) {
     // persons.map to filter out if badHabit exists in person.habit array
     // if it does not have a match it will return "not match"
+    return persons.map((person)=> person.habits.includes(badHabit) ? person.firstName + " " + person.lastName : "not match"
     // then that array is filtered to only return element that does not equal "not match"
-   return persons.map((person)=> person.habits.includes(badHabit) ? person.firstName + " " + person.lastName : "not match"
    ).filter((person) => person !== "not match")
 }
-console.log(santasNaughtyListFunctional(students, badHabit1))
+
+// function santasNaughtyListFunctional(persons, badHabit) {
+//     const output = persons.filter((person)=> person.habits.includes(badHabit)
+//    )
+// }
+
+// console.log(santasNaughtyListFunctional(students, badHabit1))
 
 
 /*****************************************************************************/
